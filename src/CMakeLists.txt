@@ -151,6 +151,17 @@ if(KOMPUTE_OPT_INSTALL)
         ARCHIVE DESTINATION lib
         INCLUDES DESTINATION include)
 
+    target_include_directories(kompute PUBLIC $<INSTALL_INTERFACE:include>)
+
+    if(KOMPUTE_OPT_ANDROID_BUILD)
+      install(TARGETS kompute_vk_ndk_wrapper EXPORT KomputeTargets
+          LIBRARY DESTINATION lib
+          ARCHIVE DESTINATION lib
+          INCLUDES DESTINATION include)
+
+      target_include_directories(kompute_vk_ndk_wrapper PUBLIC $<INSTALL_INTERFACE:include>)
+    endif()
+
     install(DIRECTORY include/ DESTINATION include)
 
     install(DIRECTORY ${PROJECT_SOURCE_DIR}/single_include/
