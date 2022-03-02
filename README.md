@@ -2,7 +2,7 @@
 ![GitHub](https://img.shields.io/badge/Version-0.7.0-green.svg)
 ![GitHub](https://img.shields.io/badge/C++-14—20-purple.svg)
 ![GitHub](https://img.shields.io/badge/Build-cmake-red.svg)
-![GitHub](https://img.shields.io/badge/Python-3.5—3.9-blue.svg)
+![GitHub](https://img.shields.io/badge/Python-3.7—3.9-blue.svg)
 ![GitHub](https://img.shields.io/badge/License-Apache-black.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4834/badge)](https://bestpractices.coreinfrastructure.org/projects/4834)
 
@@ -16,7 +16,7 @@
 <td>
 
 <h1>Kompute</h1>
-<h3>The general purpose GPU compute framework for cross vendor graphics cards (AMD, Qualcomm, NVIDIA & friends).</h3>
+<h3>The general purpose GPU compute framework for cross vendor graphics cards (AMD, Qualcomm, NVIDIA & friends)</h3>
 
 </td>
 
@@ -25,7 +25,7 @@
 
 <h4>Blazing fast, mobile-enabled, asynchronous, and optimized for advanced GPU acceleration usecases.</h4>
 
-💬 [Join the Discord for Questions / Chat](https://discord.gg/ywjaBH6v24) 🔋 [Documentation](https://kompute.cc) 💻 [Blog Post](https://medium.com/@AxSaucedo/machine-learning-and-data-processing-in-the-gpu-with-vulkan-kompute-c9350e5e5d3a) ⌨ [Examples](#more-examples) 💾
+💬 [Join the Discord & Community Calls](https://kompute.cc/overview/community.html) 🔋 [Documentation](https://kompute.cc) 💻 [Blog Post](https://medium.com/@AxSaucedo/machine-learning-and-data-processing-in-the-gpu-with-vulkan-kompute-c9350e5e5d3a) ⌨ [Examples](#more-examples) 💾
 
 <hr>
 
@@ -49,13 +49,14 @@
 
 ## Principles & Features
 
-* Low level extensible [C++ SDK](#your-first-kompute-c) with high level optimized [Python module](#your-first-kompute-python)
+* [Flexible Python module](#your-first-kompute-python) with [C++ SDK](#your-first-kompute-c) for optimizations
 * [Asynchronous & parallel processing](#asynchronous-and-parallel-operations) support through GPU family queues
 * [Mobile enabled](#mobile-enabled) with examples via Android NDK across several architectures
 * BYOV: [Bring-your-own-Vulkan design](#motivations) to play nice with existing Vulkan applications
 * Explicit relationships for GPU and host [memory ownership and memory management](https://kompute.cc/overview/memory-management.html)
 * Robust codebase with [90% unit test code coverage](https://kompute.cc/codecov/)
 * Advanced use-cases on [machine learning 🤖](https://towardsdatascience.com/machine-learning-and-data-processing-in-the-gpu-with-vulkan-kompute-c9350e5e5d3a), [mobile development 📱](https://towardsdatascience.com/gpu-accelerated-machine-learning-in-your-mobile-applications-using-the-android-ndk-vulkan-kompute-1e9da37b7617) and [game development 🎮](https://towardsdatascience.com/supercharging-game-development-with-gpu-accelerated-ml-using-vulkan-kompute-the-godot-game-engine-4e75a84ea9f0).
+* Active community with [monthly calls, discord chat and more](https://kompute.cc/overview/community.html)
 
 ![](https://raw.githubusercontent.com/KomputeProject/kompute/master/docs/images/komputer-logos.gif)
 
@@ -63,7 +64,7 @@
 
 Below you can find a GPU multiplication example using the C++ and Python Kompute interfaces.
 
-You can [join the Discord](https://discord.gg/ywjaBH6v24) for questions/discussion, open a [github issue](https://github.com/KomputeProject/kompute/issues/new), or read [the documentation](https://kompute.cc/).
+You can [join the Discord](https://discord.gg/ywjaBH6v24) for questions / discussion, open a [github issue](https://github.com/KomputeProject/kompute/issues/new), or read [the documentation](https://kompute.cc/).
 
 ### Your First Kompute (C++)
 
@@ -165,6 +166,8 @@ The [Python package](https://kompute.cc/overview/python-package.html) provides a
 
 ```python
 
+from .utils import compile_source # using util function from python/test/utils
+
 def kompute(shader):
     # 1. Create Kompute Manager with default settings (device 0, first queue and no extensions)
     mgr = kp.Manager()
@@ -187,7 +190,7 @@ def kompute(shader):
     push_consts_b = [3]
 
     # See documentation shader section for compile_source
-    spirv = kp.Shader.compile_source(shader)
+    spirv = compile_source(shader)
 
     algo = mgr.algorithm(params, spirv, workgroup, spec_consts, push_consts_a)
 
@@ -508,4 +511,3 @@ This project started after seeing that a lot of new and renowned ML & DL project
 The Vulkan SDK offers a great low level interface that enables for highly specialized optimizations - however it comes at a cost of highly verbose code which requires 500-2000 lines of code to even begin writing application code. This has resulted in each of these projects having to implement the same baseline to abstract the non-compute related features of the Vulkan SDK. This large amount of non-standardised boiler-plate can result in limited knowledge transfer, higher chance of unique framework implementation bugs being introduced, etc.
 
 We are currently developing Kompute not to hide the Vulkan SDK interface (as it's incredibly well designed) but to augment it with a direct focus on the Vulkan SDK's GPU computing capabilities. [This article](https://towardsdatascience.com/machine-learning-and-data-processing-in-the-gpu-with-vulkan-kompute-c9350e5e5d3a) provides a high level overview of the motivations of Kompute, together with a set of hands on examples that introduce both GPU computing as well as the core Kompute architecture.
-

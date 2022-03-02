@@ -12,9 +12,11 @@ Documentation Index (as per sidebar)
 --------
 
 .. toctree::
-    :maxdepth: 0
+    :titlesonly:
+    :caption: C++ Documentation:
 
     Documentation Home <https://kompute.cc/>
+    Community Meetings, Discord & Links <overview/community>
 
 .. toctree::
     :titlesonly:
@@ -55,4 +57,3 @@ Documentation Index (as per sidebar)
     Variable Types for Tensors, and Push/Spec Constants <overview/variable-types>
     Asynchronous & Parallel Operations <overview/async-parallel>
     Code Index <genindex>
-

@@ -54,8 +54,6 @@ target_include_directories(
     kompute PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/single_include>
-    $<INSTALL_INTERFACE:include>
-    $<INSTALL_INTERFACE:single_include>
 )
 
 if(NOT KOMPUTE_OPT_ANDROID_BUILD)
